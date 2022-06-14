@@ -14,14 +14,65 @@ vector<string> split(const string &);
  */
 
 int migratoryBirds(vector<int> arr) {
+    int typeOneCount = 0;
+    int typeTwoCount = 0;
+    int typeThreeCount = 0;
+    int typeFourCount = 0;
+    int typeFiveCount = 0;
+    int highestFrequencyType = 0;
 
     //Look at the array of "birds".
-
-    //Set a counter for each of the 5 types
+    for (int i = 0; i < arr.size(); i++) {
+        //Set a counter for each of the 5 types
+        int currentType = 0;
+        currentType = arr[i];
+        switch (currentType) {
+            case 1:
+                typeOneCount++;
+                break;
+            case 2:
+                typeTwoCount++;
+                break;
+            case 3:
+                typeThreeCount++;
+                break;
+            case 4:
+                typeFourCount++;
+                break;
+            case 5:
+                typeFiveCount++;
+                break;
+            default:
+                std::cout << "ERROR: Type does not match allowed values [1-5]" << std::endl;
+                break;
+        }
+    }
 
     //Compare counts of the 5 types. The type with the highest counts should be returned.
+    //Since lowest with highest count should be returned, start with 5, and compare descending.
+    if (typeFiveCount > highestFrequencyType) {
+        highestFrequencyType = typeFiveCount;
+    }
+
+    if (typeFourCount >= typeFiveCount) {
+        highestFrequencyType = typeFourCount;
+    }
+
+    if (typeThreeCount >= typeFourCount) {
+        highestFrequencyType = typeThreeCount;
+    }
+
+    if (typeTwoCount >= typeThreeCount) {
+        highestFrequencyType = typeTwoCount;
+    }
+
+    if (typeOneCount >= typeTwoCount) {
+        highestFrequencyType = typeOneCount;
+    }
 
     //If two types have the same count, return the lowest type.
+
+    return highestFrequencyType;
 
 }
 
