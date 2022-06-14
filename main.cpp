@@ -62,7 +62,7 @@ int migratoryBirds(vector<int> arr) {
 
     //If two types have the same count, return the lowest type.
     for (int j = 4; j >= 0; j--) {
-        if (typeFrequencies[j] > minType) {
+        if (typeFrequencies[j] >= minType) {
             minType = typeFrequencies [j];
             highestFrequencyType = j + 1; //Adjusted so the type matches (1 index) matches the array index (0 index)
         }
