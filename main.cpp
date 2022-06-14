@@ -85,18 +85,20 @@ int main()
     getline(cin, arr_temp_temp);
 
     vector<string> arr_temp = split(rtrim(arr_temp_temp));
+    if (arr_count >= 5 && arr_count <= 2e5) {
+        vector<int> arr(arr_count);
 
-    vector<int> arr(arr_count);
+        for (int i = 0; i < arr_count; i++) {
+            int arr_item = stoi(arr_temp[i]);
+            if (arr_item >= 1 && arr_item <= 5) {
+                arr[i] = arr_item;
+            }
+        }
 
-    for (int i = 0; i < arr_count; i++) {
-        int arr_item = stoi(arr_temp[i]);
+        int result = migratoryBirds(arr);
 
-        arr[i] = arr_item;
+        fout << result << "\n";
     }
-
-    int result = migratoryBirds(arr);
-
-    fout << result << "\n";
 
     fout.close();
 
