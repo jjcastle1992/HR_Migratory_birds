@@ -20,6 +20,8 @@ int migratoryBirds(vector<int> arr) {
     int typeFourCount = 0;
     int typeFiveCount = 0;
     int highestFrequencyType = 0;
+    int typeFrequencies [5];
+    int minType = 0;
 
     //Look at the array of "birds".
     for (int i = 0; i < arr.size(); i++) {
@@ -50,27 +52,21 @@ int migratoryBirds(vector<int> arr) {
 
     //Compare counts of the 5 types. The type with the highest counts should be returned.
     //Since lowest with highest count should be returned, start with 5, and compare descending.
-    if (typeFiveCount > highestFrequencyType) {
-        highestFrequencyType = typeFiveCount;
-    }
 
-    if (typeFourCount >= typeFiveCount) {
-        highestFrequencyType = typeFourCount;
-    }
-
-    if (typeThreeCount >= typeFourCount) {
-        highestFrequencyType = typeThreeCount;
-    }
-
-    if (typeTwoCount >= typeThreeCount) {
-        highestFrequencyType = typeTwoCount;
-    }
-
-    if (typeOneCount >= typeTwoCount) {
-        highestFrequencyType = typeOneCount;
-    }
+    //load the results into an ordered array with type 1 at index 0 and type 5 at index 4.
+    typeFrequencies[0] = typeOneCount;
+    typeFrequencies[1] = typeTwoCount;
+    typeFrequencies[2] = typeThreeCount;
+    typeFrequencies[3] = typeFourCount;
+    typeFrequencies[4] = typeFiveCount;
 
     //If two types have the same count, return the lowest type.
+    for (int j = 4; j >= 0; j--) {
+        if (typeFrequencies[j] > minType) {
+            minType = typeFrequencies [j];
+            highestFrequencyType = j + 1; //Adjusted so the type matches (1 index) matches the array index (0 index)
+        }
+    }
 
     return highestFrequencyType;
 
