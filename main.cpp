@@ -15,6 +15,14 @@ vector<string> split(const string &);
 
 int migratoryBirds(vector<int> arr) {
 
+    //Look at the array of "birds".
+
+    //Set a counter for each of the 5 types
+
+    //Compare counts of the 5 types. The type with the highest counts should be returned.
+
+    //If two types have the same count, return the lowest type.
+
 }
 
 int main()
